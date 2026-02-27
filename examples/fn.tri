@@ -1,0 +1,17 @@
+fn gate(a, b) {
+  // готовность = a AND b
+  return a and b;
+}
+
+let x = 1;
+let y = M;
+
+print gate(x, y); // ожидаем M
+
+if gate(x, y) {
+  print 1;
+} maybe {
+  print M;
+} else {
+  print 0;
+}

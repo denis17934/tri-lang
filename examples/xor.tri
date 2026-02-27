@@ -1,0 +1,5 @@
+check (1 xor 0); // OK (1)
+check (1 xor M); // FAIL:M
+check (M xor 0); // FAIL:M
+check (1 xor 1); // FAIL:0
+check (M xor M); // FAIL:0

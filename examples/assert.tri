@@ -1,0 +1,4 @@
+// assert must be strictly 1
+assert (1 eq 1);
+assert (M eq M);
+assert (0 eq 0);

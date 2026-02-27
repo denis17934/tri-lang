@@ -1,0 +1,7 @@
+check (1 eq 1); // OK
+check (1 eq M); // FAIL:M
+check (1 eq 0); // FAIL:0
+
+check (M eq M); // OK
+check (M eq 0); // FAIL:M
+check (0 eq 0); // OK

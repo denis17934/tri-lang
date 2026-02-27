@@ -1,0 +1,39 @@
+// De Morgan laws in tri logic for all (a,b) in {0, M, 1}^2
+// Law 1: not (a and b) eq ((not a) or (not b))
+// Law 2: not (a or b) eq ((not a) and (not b))
+
+// (0, 0)
+assert (not (0 and 0) eq ((not 0) or (not 0)));
+assert (not (0 or 0) eq ((not 0) and (not 0)));
+
+// (0, M)
+assert (not (0 and M) eq ((not 0) or (not M)));
+assert (not (0 or M) eq ((not 0) and (not M)));
+
+// (0, 1)
+assert (not (0 and 1) eq ((not 0) or (not 1)));
+assert (not (0 or 1) eq ((not 0) and (not 1)));
+
+// (M, 0)
+assert (not (M and 0) eq ((not M) or (not 0)));
+assert (not (M or 0) eq ((not M) and (not 0)));
+
+// (M, M)
+assert (not (M and M) eq ((not M) or (not M)));
+assert (not (M or M) eq ((not M) and (not M)));
+
+// (M, 1)
+assert (not (M and 1) eq ((not M) or (not 1)));
+assert (not (M or 1) eq ((not M) and (not 1)));
+
+// (1, 0)
+assert (not (1 and 0) eq ((not 1) or (not 0)));
+assert (not (1 or 0) eq ((not 1) and (not 0)));
+
+// (1, M)
+assert (not (1 and M) eq ((not 1) or (not M)));
+assert (not (1 or M) eq ((not 1) and (not M)));
+
+// (1, 1)
+assert (not (1 and 1) eq ((not 1) or (not 1)));
+assert (not (1 or 1) eq ((not 1) and (not 1)));

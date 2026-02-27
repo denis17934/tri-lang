@@ -1,0 +1,16 @@
+// values: 0, M, 1
+let a = 1;
+let b = M;
+let c = 0;
+
+print a and b;   // M
+print a or c;    // 1
+print not b;     // M
+
+if b {
+  print 1;
+} maybe {
+  print M;
+} else {
+  print 0;
+}

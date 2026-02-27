@@ -1,0 +1,11 @@
+// smoke test pack
+
+print 1 and M;     // M
+print 1 or 0;      // 1
+print not M;       // M
+print (1 == M);    // M
+print (M eq M);    // 1
+
+check (1 xor 0);   // OK
+check (1 eq 1);    // OK
+check (1 == 0);    // FAIL:0

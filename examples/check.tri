@@ -1,0 +1,5 @@
+fn gate(a, b) { return a and b; }
+
+check gate(1, 1); // OK
+check gate(1, M); // FAIL:M
+check gate(0, 1); // FAIL:0

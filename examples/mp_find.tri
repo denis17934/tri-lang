@@ -1,0 +1,13 @@
+fn mp(a,b) { return (a and (a imp b)) imp b; }
+
+print mp(0,0);
+print mp(0,M);
+print mp(0,1);
+
+print mp(M,0);
+print mp(M,M);
+print mp(M,1);
+
+print mp(1,0);
+print mp(1,M);
+print mp(1,1);
