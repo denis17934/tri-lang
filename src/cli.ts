@@ -4,7 +4,7 @@ import { lex } from "./lexer.ts";
 import { parse } from "./parser.ts";
 import { VM } from "./vm.ts";
 
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 
 function runFile(file: string) {
   const code = readFileSync(file, "utf8");

@@ -1,19 +1,16 @@
 {
-  "name": "tri-lang",
-  "version": "0.1.1",
+  "name": "@denvor/tri-lang",
+  "version": "0.1.2",
   "type": "module",
   "bin": {
-    "tri": "./src/tri.mjs"
+    "tri": "dist/tri"
   },
   "scripts": {
-    "tri": "tsx src/cli.ts",
     "build": "node scripts/build.mjs",
+    "prepare": "npm run build",
     "test": "node scripts/test.mjs"
   },
   "devDependencies": {
-    "@types/node": "^25.2.3",
-    "esbuild": "^0.25.0",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "esbuild": "^0.25.0"
   }
 }
