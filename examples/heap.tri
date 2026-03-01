@@ -1,0 +1,9 @@
+// heap demo
+let base = alloc(3);
+store(base + 0, 1);
+store(base + 1, M);
+store(base + 2, 0);
+
+print load(base + 0);
+print load(base + 1);
+print load(base + 2);

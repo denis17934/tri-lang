@@ -1,0 +1,19 @@
+fn fact(n) {
+  if (n < 0) {
+    return M;   // undefined -> unknown
+  } maybe {
+    return M;
+  } else {
+    if (n <= 1) {
+      return 1;
+    } maybe {
+      return 1;
+    } else {
+      return n * fact(n - 1);
+    }
+  }
+}
+
+print fact(6);   // 720
+print fact(0);   // 1
+print fact(-1);  // M

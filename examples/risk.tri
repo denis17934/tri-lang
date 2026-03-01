@@ -1,0 +1,36 @@
+// tri decision demo: 0/ M/ 1 with explicit REVIEW + “what to ask” codes
+
+let docs = M;        // KYC docs verified?
+let income = 1;      // income verified?
+let fraud = 0;       // fraud flag?
+let history = M;     // credit history ok?
+
+let approve = income and docs and (not fraud) and history;
+
+// decision: 1=APPROVE, M=REVIEW, 0=REJECT
+if approve {
+  print 1;
+} maybe {
+  print M;
+} else {
+  print 0;
+}
+
+// if REVIEW -> print request codes (ints):
+// 1 = request docs
+// 2 = request history
+// 3 = request docs+history
+if approve eq M {
+  let need = 0;
+
+  if docs eq M { need = need + 1; } maybe { need = need + 1; } else { need = need + 0; }
+  if history eq M { need = need + 2; } maybe { need = need + 2; } else { need = need + 0; }
+
+  print need;
+} maybe {
+  // if somehow unknown, act like review
+  print 3;
+} else {
+  // not review -> no requests
+  print 0;
+}

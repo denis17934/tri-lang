@@ -1,0 +1,6 @@
+// builtin digits_fact(n): returns number of decimal digits in n! (as int)
+// n < 0 -> M (unknown)
+
+print digits_fact(6);        // 3
+print digits_fact(1000000);  // huge
+print digits_fact(-1);       // M

@@ -1,0 +1,3 @@
+print fact_mod(6, 97);
+print fact_mod(1000000, 97);
+print fact_mod(-1, 97);
