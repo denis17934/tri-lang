@@ -12,6 +12,12 @@ function triRun(program){
   return lines;
 }
 
+function label(decision){
+  if (decision === "1") return "APPROVE";
+  if (decision === "0") return "REJECT";
+  return "REVIEW";
+}
+
 function decisionAndNeed(env){
   // decision: 1 approve, M review, 0 reject
   // need: 0 none, 1 docs, 2 history, 3 both
@@ -22,20 +28,29 @@ let income = ${env.income ?? "M"};
 let fraud = ${env.fraud ?? "M"};
 let history = ${env.history ?? "M"};
 
-// rule
-let approve = income and docs and (not fraud) and history;
+// helper: strict "is unknown?"
+fn isM(x) {
+  if x { return 0; }
+  maybe { return 1; }
+  else { return 0; }
+}
 
-// decision
-print approve;
+// rule
+let decision = income and docs and (not fraud) and history;
+print decision;
 
 // need code
 let need = 0;
-if docs eq M { need = need + 1; } maybe { need = need + 1; } else { need = need + 0; }
-if history eq M { need = need + 2; } maybe { need = need + 2; } else { need = need + 0; }
+need = need + isM(docs) * 1;
+need = need + isM(history) * 2;
 print need;
 `;
-  const [decision, need] = triRun(program);
-  return { decision, need: Number(need) };
+  const [decision, needStr] = triRun(program);
+  const need = Number(needStr);
+  const need_list = [];
+  if (need & 1) need_list.push("docs");
+  if (need & 2) need_list.push("history");
+  return { decision, label: label(decision), need, need_list };
 }
 
 const port = 7334;

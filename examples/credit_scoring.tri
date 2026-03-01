@@ -1,0 +1,37 @@
+// credit_scoring.tri
+// tri-values: 0 = NO, M = UNKNOWN, 1 = YES
+// Decision: 1=APPROVE, 0=REJECT, M=REVIEW
+// Need flags: 1 means "missing (M)", 0 means "not missing"
+
+fn isM(x) {
+  if x { return 0; }
+  maybe { return 1; }
+  else { return 0; }
+}
+
+// CASE A: REVIEW (missing docs+history)
+let income = M;
+let docs = M;
+let fraud = 0;
+let history = M;
+print (income and docs and (not fraud) and history);
+print isM(docs);
+print isM(history);
+
+// CASE B: APPROVE
+income = 1;
+docs = 1;
+fraud = 0;
+history = 1;
+print (income and docs and (not fraud) and history);
+print isM(docs);
+print isM(history);
+
+// CASE C: REJECT (fraud)
+income = 1;
+docs = 1;
+fraud = 1;
+history = 1;
+print (income and docs and (not fraud) and history);
+print isM(docs);
+print isM(history);
