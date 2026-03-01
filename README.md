@@ -2,6 +2,14 @@
 
 Мини-язык троичной логики: `0` (нет), `M` (unknown), `1` (да).
 
+## 60 секунд демо
+
+1) Запусти risk API (в одном терминале):
+cd ~/tri-lang && node scripts/risk_server.mjs
+
+2) В новом терминале запусти демо:
+cd ~/tri-lang && ./scripts/demo_60s.sh
+
 ## Быстрый старт
 
 Запуск файла:
@@ -31,3 +39,4 @@ cd ~/tri-lang
 node scripts/risk_server.mjs
 
 curl -s -X POST http://127.0.0.1:7334/risk -H "Content-Type: application/json" -d '{"env":{"income":"1","docs":"M","fraud":"0","history":"M"}}'
+# {"decision":"M","need":3}
