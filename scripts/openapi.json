@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "tri-risk", "version": "0.1.0" },
+  "servers": [{ "url": "http://127.0.0.1:7444" }],
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": { "type": "apiKey", "in": "header", "name": "X-API-Key" }
+    },
+    "schemas": {
+      "RiskRequest": {
+        "type": "object",
+        "properties": {
+          "env": {
+            "type": "object",
+            "properties": {
+              "income": { "type": "string", "enum": ["0","M","1"] },
+              "docs": { "type": "string", "enum": ["0","M","1"] },
+              "fraud": { "type": "string", "enum": ["0","M","1"] },
+              "history": { "type": "string", "enum": ["0","M","1"] }
+            },
+            "required": ["income","docs","fraud","history"]
+          }
+        },
+        "required": ["env"]
+      },
+      "RiskResponse": {
+        "type": "object",
+        "properties": {
+          "decision": { "type": "string", "enum": ["0","M","1"] },
+          "label": { "type": "string" },
+          "need": { "type": "integer" },
+          "need_list": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["decision","label","need","need_list"]
+      },
+      "UsageResponse": {
+        "type": "object",
+        "properties": {
+          "ok": { "type": "boolean" },
+          "key": { "type": "string" },
+          "count": { "type": "integer" },
+          "window_start": { "type": "integer" },
+          "window_ms": { "type": "integer" },
+          "max_req": { "type": "integer" }
+        },
+        "required": ["ok","key","count","window_start","window_ms","max_req"]
+      }
+    }
+  },
+  "paths": {
+    "/v1/risk": {
+      "post": {
+        "security": [{ "apiKeyAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RiskRequest" } } }
+        },
+        "responses": {
+          "200": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RiskResponse" } } } },
+          "401": { "description": "Unauthorized" },
+          "429": { "description": "Rate limit" }
+        }
+      }
+    },
+    "/v1/usage": {
+      "get": {
+        "security": [{ "apiKeyAuth": [] }],
+        "responses": {
+          "200": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UsageResponse" } } } },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    }
+  }
+}
