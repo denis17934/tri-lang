@@ -8,3 +8,17 @@ count
 dist/
 rules/
 
+
+# local bot env and runtime data
+.env.leads_bot
+leads.jsonl
+users.json
+
+# local bot/dev scripts not ready for repo
+scripts/leads_bot.mjs
+scripts/bigfact_cached.sh
+scripts/biz_invoice_flow.mjs
+
+# backups
+scripts/*.bak
+scripts/*.BROKEN.*
