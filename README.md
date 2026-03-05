@@ -1,42 +1,25 @@
-# tri-lang (0 / M / 1)
+# tri-lang
 
-Мини-язык троичной логики: `0` (нет), `M` (unknown), `1` (да).
+A tiny ternary-logic language + VM + CLI where:
+- `0` = false
+- `1` = true
+- `M` = **unknown** (not probability, not “half-true”)
 
-## 60 секунд демо
+Includes a rule/decision engine style workflow (tri-risk) with `decision` + `need_list`.
 
-1) Запусти risk API (в одном терминале):
-cd ~/tri-lang && node scripts/risk_server.mjs
+## Quickstart
 
-2) В новом терминале запусти демо:
-cd ~/tri-lang && ./scripts/demo_60s.sh
+    npm install
+    npm run build
+    node cli.mjs --expr "a and b" --list
+    node cli.mjs fib 1000000
+    node cli.mjs bigfact 1000000
 
-## Быстрый старт
+## Why ternary 0/M/1?
 
-Запуск файла:
-tri examples/demo.tri
+Binary logic forces “yes/no” even when data is missing.  
+`M` preserves uncertainty and enables explainable workflows via `need_list`.
 
-REPL:
-tri
+## License
 
-Таблицы истинности:
-tri --table and
-tri --table imp
-
-Выражение (9 строк):
-echo "a imp b" | tri --expr --stdin --list
-
-Big factorial (GMP):
-tri bigfact 1000000 --sci --head 20 --tail 20 --out /tmp/fact1000000.txt
-
-Risk demo:
-tri examples/risk.tri
-# outputs:
-# M
-# 3  (docs+history)
-
-Local Risk API:
-cd ~/tri-lang
-node scripts/risk_server.mjs
-
-curl -s -X POST http://127.0.0.1:7334/risk -H "Content-Type: application/json" -d '{"env":{"income":"1","docs":"M","fraud":"0","history":"M"}}'
-# {"decision":"M","need":3}
+Apache-2.0
