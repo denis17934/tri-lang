@@ -1,5 +1,9 @@
 # tri-lang
 
+[![CI](https://github.com/denis17934/tri-lang/actions/workflows/ci.yml/badge.svg)](https://github.com/denis17934/tri-lang/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/denis17934/tri-lang)](https://github.com/denis17934/tri-lang/releases/latest)
+[![License](https://img.shields.io/github/license/denis17934/tri-lang)](https://github.com/denis17934/tri-lang/blob/main/LICENSE)
+
 A tiny ternary-logic language + VM + CLI where:
 - `0` = false
 - `1` = true
