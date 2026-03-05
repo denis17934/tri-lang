@@ -1,0 +1,13 @@
+// insurance refund demo
+// decision is tri value: 1 ok, 0 stop, M need more data
+
+fn refund_decision(has_contract, within_cooling, has_statement, has_passport, debt) {
+  // ok only if all required facts are 1 and no debt
+  return has_contract and within_cooling and has_statement and has_passport and (not debt);
+}
+
+print refund_decision(1, 1, 1, 1, 0); // 1 ok
+print refund_decision(1, 1, 0, 1, 0); // 0 or M depending on unknowns
+print refund_decision(1, 1, M, 1, 0); // M need
+print refund_decision(1, 0, 1, 1, 0); // 0 stop
+print refund_decision(1, 1, 1, 1, 1); // 0 stop (debt)

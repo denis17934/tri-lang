@@ -1,0 +1,10 @@
+// medical document validation demo
+// 1 = valid, 0 = invalid, M = need more data
+
+fn med_doc_ok(has_stamp, has_doctor_sign, has_date, readable) {
+  return readable and has_stamp and has_doctor_sign and has_date;
+}
+
+print med_doc_ok(1, 1, 1, 1); // 1
+print med_doc_ok(0, 1, 1, 1); // 0 (no stamp)
+print med_doc_ok(M, 1, 1, 1); // M (unknown)

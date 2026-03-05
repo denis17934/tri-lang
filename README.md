@@ -27,3 +27,8 @@ Binary logic forces “yes/no” even when data is missing.
 ## License
 
 Apache-2.0
+
+## Examples
+- `examples/insurance_refund.tri` — refund decision (ok/stop/unknown)
+- `examples/insurance_med_doc.tri` — medical document validation
+- `docs/README_DECISIONS.md` — short explanation of decision/need
