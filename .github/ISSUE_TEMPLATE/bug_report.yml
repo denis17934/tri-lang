@@ -1,0 +1,20 @@
+name: Bug report
+description: Something isn’t working
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: What did you expect vs what happened?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1) ...\n2) ...\n3) ..."
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: tri version / commit
+      placeholder: "e.g. v0.1.4-1-g59d375f"
