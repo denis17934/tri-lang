@@ -1,0 +1,13 @@
+{
+  "name": "insurance_refund_scoring",
+  "ok_threshold": 12,
+  "stop_threshold": -12,
+  "min_coverage": 0.7,
+  "factors": {
+    "has_contract":   { "value": 1, "weight": 7 },
+    "within_cooling": { "value": 1, "weight": 8 },
+    "has_statement":  { "value": "M", "weight": 6 },
+    "has_passport":   { "value": 1, "weight": 5 },
+    "debt":           { "value": 0, "weight": 10 }
+  }
+}

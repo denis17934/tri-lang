@@ -32,3 +32,7 @@ Apache-2.0
 - `examples/insurance_refund.tri` — refund decision (ok/stop/unknown)
 - `examples/insurance_med_doc.tri` — medical document validation
 - `docs/README_DECISIONS.md` — short explanation of decision/need
+
+- `docs/SCORING.md` — weights thresholds and coverage over tri values
+- `examples/insurance_refund_scoring.json` — scoring example
+- `scripts/score_demo.mjs` — simple scoring demo
