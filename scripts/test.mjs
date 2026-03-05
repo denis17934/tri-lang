@@ -13,7 +13,7 @@ const files = readdirSync(new URL("../examples/", import.meta.url))
 for (const f of files) {
   const path = `examples/${f}`;
   console.log(`== ${path} ==`);
-  const r = spawnSync("tri", [path], { stdio: "inherit" });
+  const r = spawnSync("node", ["dist/cli.mjs", path], { stdio: "inherit" });
   if (r.status !== 0) process.exit(r.status ?? 1);
 }
 
