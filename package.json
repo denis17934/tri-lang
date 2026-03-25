@@ -1,6 +1,6 @@
 {
   "name": "@denvor/tri-lang",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "type": "module",
   "bin": {
     "tri": "dist/tri"
