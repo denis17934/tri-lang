@@ -12,4 +12,25 @@ echo "2) tri quick sanity"
 ./bin/tri-test || true
 echo
 
+
+echo
+echo "3) M -> need_list -> 1 (demo loop)"
+BASE="http://127.0.0.1:7334/risk"
+
+echo "step1: send partial facts (expect decision=M + need_list)"
+curl -s -X POST "$BASE" -H "Content-Type: application/json"   -d '{"env":{"income":"1","fraud":"0","docs":"M","history":"M"}}' | tee /tmp/tri_demo_step1.json
+echo
+
+echo -n "need_list: "
+python3 -c 'import json; d=json.load(open("/tmp/tri_demo_step1.json")); print(d.get("need_list"))'
+
+echo
+echo "step2: send completed facts (expect decision=1)"
+curl -s -X POST "$BASE" -H "Content-Type: application/json"   -d '{"env":{"income":"1","fraud":"0","docs":"1","history":"1"}}' | tee /tmp/tri_demo_step2.json
+echo
+
+echo -n "final: "
+python3 -c 'import json; d=json.load(open("/tmp/tri_demo_step2.json")); print({"decision": d.get("decision"), "label": d.get("label")})'
+echo
+
 echo "done ✅"
