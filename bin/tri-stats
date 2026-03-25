@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO="denis17934/tri-lang"
+API="https://api.github.com"
+AUTH=()
+
+if [[ -n "${GH_TOKEN:-}" && "${GH_TOKEN}" != "PASTE_TOKEN" && "${GH_TOKEN}" != "ВСТАВЬ_СВОЙ_ТОКЕН" ]]; then
+  AUTH=(-H "Authorization: Bearer ${GH_TOKEN}")
+fi
+
+echo "repo: $REPO"
+echo
+
+# repo basics
+curl -s "${AUTH[@]}" -H "Accept: application/vnd.github+json" "$API/repos/$REPO" \
+| python3 -c 'import sys,json; d=json.load(sys.stdin);
+print("stars:", d.get("stargazers_count",0));
+print("forks:", d.get("forks_count",0));
+print("watchers(subscribers):", d.get("subscribers_count",0));
+print("open_issues:", d.get("open_issues_count",0))'
+echo
+
+# releases / downloads
+curl -s "${AUTH[@]}" -H "Accept: application/vnd.github+json" "$API/repos/$REPO/releases" \
+| python3 -c 'import sys,json; rels=json.load(sys.stdin);
+total=sum(a.get("download_count",0) for r in rels for a in r.get("assets",[]));
+print("releases:", len(rels));
+print("release_assets_downloads_total:", total)'
+echo
+
+# traffic (needs token with access to traffic)
+if [[ ${#AUTH[@]} -eq 0 ]]; then
+  echo "traffic: SKIP (set GH_TOKEN to view clones/views)"
+else
+  echo "traffic (last 14 days):"
+  echo -n "clones: "
+  curl -s "${AUTH[@]}" -H "Accept: application/vnd.github+json" "$API/repos/$REPO/traffic/clones" \
+  | python3 -c 'import sys,json; d=json.load(sys.stdin);
+print(d.get("count","?"), "uniques:", d.get("uniques","?"))'
+  echo -n "views : "
+  curl -s "${AUTH[@]}" -H "Accept: application/vnd.github+json" "$API/repos/$REPO/traffic/views" \
+  | python3 -c 'import sys,json; d=json.load(sys.stdin);
+print(d.get("count","?"), "uniques:", d.get("uniques","?"))'
+fi

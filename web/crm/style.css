@@ -1,0 +1,93 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0b0c10;color:#e7e7e7}
+.app{height:100vh;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #222;background:#0b0c10}
+.brand{font-weight:800;letter-spacing:.5px}
+.tools{display:flex;gap:10px;align-items:center}
+.tools input{background:#111;border:1px solid #2a2a2a;color:#e7e7e7;padding:8px 10px;border-radius:10px;min-width:260px}
+.tools button{background:#121212;border:1px solid #2a2a2a;color:#e7e7e7;padding:8px 10px;border-radius:10px;cursor:pointer}
+
+.main{flex:1;display:grid;grid-template-columns: 1fr 1.2fr;min-height:0}
+.kanban{display:grid;grid-template-columns:repeat(5, minmax(180px, 1fr));gap:10px;padding:10px;border-right:1px solid #222;overflow:auto}
+.col{background:#0f1015;border:1px solid #232323;border-radius:14px;display:flex;flex-direction:column;min-height:0}
+.colHead{padding:10px 12px;border-bottom:1px solid #232323;color:#aaa;font-weight:700;text-transform:lowercase}
+.colBody{padding:10px;display:flex;flex-direction:column;gap:10px;overflow:auto;min-height:0}
+
+.cardItem{background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:10px;cursor:pointer}
+.cardItem:hover{border-color:#3a3a3a}
+.cardItem .t{font-weight:700}
+.cardItem .s{margin-top:6px;color:#a9a9a9;font-size:12px}
+.cardItem.dragging{opacity:.5}
+
+.card{padding:14px;overflow:auto}
+.cardHead{display:flex;align-items:center;justify-content:space-between}
+.title{font-size:20px;font-weight:800}
+.badge{padding:6px 10px;border-radius:999px;border:1px solid #2a2a2a;background:#111;color:#ddd;font-size:12px}
+.meta{margin:10px 0;color:#bdbdbd;font-size:13px;line-height:1.4;white-space:pre-wrap}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+.actions button{background:#121212;border:1px solid #2a2a2a;color:#e7e7e7;padding:8px 10px;border-radius:10px;cursor:pointer}
+
+.taskWrap,.noteWrap{border:1px solid #232323;border-radius:14px;background:#0f1015;margin:12px 0;padding:10px}
+.taskHead,.noteHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;color:#ddd}
+.taskAdd{display:flex;gap:8px;align-items:center}
+.taskAdd input{background:#111;border:1px solid #2a2a2a;color:#e7e7e7;padding:8px;border-radius:10px;min-width:220px}
+.taskAdd button{background:#121212;border:1px solid #2a2a2a;color:#e7e7e7;padding:8px 10px;border-radius:10px;cursor:pointer}
+.tasks{display:flex;flex-direction:column;gap:8px}
+.task{display:flex;gap:10px;align-items:center;padding:8px;border:1px solid #232323;border-radius:12px;background:#111}
+.task input{width:18px;height:18px}
+textarea{width:100%;min-height:220px;background:#111;border:1px solid #2a2a2a;color:#e7e7e7;padding:10px;border-radius:12px;resize:vertical}
+
+
+.cardItem.active{border-color:#7a7a7a; box-shadow:0 0 0 1px #7a7a7a inset}
+.chip{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;border:1px solid #2a2a2a;background:#111;color:#ddd;font-size:12px;gap:6px}
+.chip.biz{border-color:#3a3a3a}
+.chip.phys{border-color:#3a3a3a}
+.chipDot{width:6px;height:6px;border-radius:50%;background:#888}
+
+
+.chip.biz{border-color:#2f4a3a;background:#0f1612}
+.chip.biz .chipDot{background:#49c27a}
+.chip.phys{border-color:#2e3f57;background:#0f141a}
+.chip.phys .chipDot{background:#4aa3ff}
+
+.amountRow{display:flex;align-items:center;gap:10px;margin:10px 0 14px}
+.amountLabel{color:#aaa;font-size:12px;text-transform:lowercase}
+#amount{background:#111;border:1px solid #2a2a2a;color:#e7e7e7;padding:8px 10px;border-radius:10px;width:160px}
+#saveAmount{background:#121212;border:1px solid #2a2a2a;color:#e7e7e7;padding:8px 10px;border-radius:10px;cursor:pointer}
+#saveAmount:hover{border-color:#3a3a3a}
+
+.taskDue{color:#9a9a9a;font-size:12px}
+.task.overdue{border-color:#5a1f26}
+.task.overdue .taskDue{color:#ff9aa5}
+.task.upcoming{border-color:#2f4a3a}
+.task.upcoming .taskDue{color:#8ff0b5}
+.task.done{opacity:.65}
+.dots{display:inline-flex;gap:6px;margin-left:8px;vertical-align:middle}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.dot.red{background:#ff4d5a}
+.dot.green{background:#49c27a}
+
+
+/* compact dash (today/tomorrow/week) */
+.dash{display:flex;align-items:center;gap:10px}
+.dashTabs{display:flex;gap:6px;flex:0 0 auto}
+.dashTabs .tab{background:#121212;border:1px solid #2a2a2a;color:#e7e7e7;padding:4px 8px;border-radius:999px;cursor:pointer;font-size:12px;line-height:1}
+.dashTabs .tab.active{border-color:#7a7a7a}
+.dashTasks{flex:1 1 auto;max-width:520px;overflow:auto;white-space:nowrap;display:flex;gap:6px}
+.dashTask{border:1px solid #232323;background:#0f1015;border-radius:999px;padding:4px 8px;font-size:12px;cursor:pointer;white-space:nowrap}
+.dashTask.overdue{border-color:#5a1f26;color:#ffb3bb}
+.dashTask.upcoming{border-color:#2f4a3a;color:#b7ffd3}
+
+/* dash override v2 (really compact) */
+.dash{display:flex;align-items:center;gap:8px;max-width:420px}
+.dashTabs .tab{padding:3px 7px;font-size:11px}
+.dashTasks{max-width:260px;max-height:26px;overflow:auto;white-space:nowrap;display:flex;gap:6px;align-items:center}
+.dashTask{padding:3px 7px;font-size:11px}
+
+.card{min-width:520px}
+
+/* topbar override: keep tools usable */
+.top{flex-wrap:wrap;gap:10px}
+.tools{flex:1 1 520px}
+.dash{flex:0 0 auto;max-width:420px}

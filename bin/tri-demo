@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "tri demo ✅"
+echo
+
+echo "1) core quick demo (60s)"
+bash scripts/demo_60s.sh || true
+echo
+
+echo "2) tri quick sanity"
+./bin/tri-test || true
+echo
+
+echo "done ✅"

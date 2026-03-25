@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "tri-check ✅"
+echo
+
+# core tests
+./bin/tri-test
+
+# optional crm tests
+if curl -fsS http://localhost:7777/api/cases >/dev/null 2>&1; then
+  echo
+  echo "crm: up ✅"
+  bash scripts/test_crm_notes.sh
+else
+  echo
+  echo "crm: down ⚠️ skip"
+fi
+
+echo
+echo "done ✅"

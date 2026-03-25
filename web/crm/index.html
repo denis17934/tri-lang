@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>tri-crm</title>
+  <link rel="stylesheet" href="/style.css?v=3" />
+</head>
+<body>
+  <div class="app">
+    <div class="top">
+      <div class="brand">tri-crm</div>
+      <div class="tools">
+        <input id="q" placeholder="поиск" />
+        <button id="reload">обновить</button>
+      
+      <div class="dash">
+        <div class="dashTabs">
+          <button class="tab" data-scope="today">сегодня</button>
+          <button class="tab" data-scope="tomorrow">завтра</button>
+          <button class="tab" data-scope="week">неделя</button>
+        </div>
+        <div id="dashTasks" class="dashTasks"></div>
+      </div>
+
+    </div>
+
+    <div class="main">
+      <div class="kanban">
+        <div class="col" data-status="new" data-label="Новые">
+          <div class="colHead">Новые</div>
+          <div class="colBody" id="col-new"></div>
+        </div>
+        <div class="col" data-status="in_progress" data-label="В работе">
+          <div class="colHead">В работе</div>
+          <div class="colBody" id="col-in_progress"></div>
+        </div>
+        <div class="col" data-status="pilot" data-label="Пилот">
+          <div class="colHead">Пилот</div>
+          <div class="colBody" id="col-pilot"></div>
+        </div>
+        <div class="col" data-status="paid" data-label="Оплачено">
+          <div class="colHead">Оплачено</div>
+          <div class="colBody" id="col-paid"></div>
+        </div>
+        <div class="col" data-status="lost" data-label="Потеряно">
+          <div class="colHead">Потеряно</div>
+          <div class="colBody" id="col-lost"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHead">
+          <div id="title" class="title">выбери кейс</div>
+          <div class="rightHead"><div id="badge" class="badge"></div><button id="deleteCase" class="danger">удалить</button></div>
+        </div>
+
+        <div id="meta" class="meta"></div>
+
+        <div class="amountRow">
+          <div class="amountLabel">сумма ₽</div>
+          <input id="amount" type="number" placeholder="0" />
+          <button id="saveAmount">сохранить</button>
+        </div>
+
+
+        <div class="actions">
+          <button data-status="new">Новые</button>
+          <button data-status="in_progress">В работе</button>
+          <button data-status="pilot">Пилот</button>
+          <button data-status="paid">Оплачено</button>
+          <button data-status="lost">Потеряно</button>
+        </div>
+
+        <div class="taskWrap">
+          <div class="taskHead">
+            <div>задачи</div>
+            <div class="taskAdd">
+              <input id="taskText" placeholder="новая задача" />
+              <input id="taskDue" type="date" />
+              <button id="addTask">добавить</button>
+              <button id="saveTasks">сохранить</button>
+            </div>
+          </div>
+          <div id="tasks" class="tasks"></div>
+        </div>
+
+        <div class="noteWrap">
+          <div class="noteHead">
+            <div>заметка</div>
+            <button id="saveNote">сохранить</button>
+          </div>
+          <textarea id="note" placeholder="фиксируй боль правила need_list следующий шаг"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js?v=3"></script>
+</body>
+</html>

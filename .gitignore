@@ -22,3 +22,13 @@ scripts/biz_invoice_flow.mjs
 # backups
 scripts/*.bak
 scripts/*.BROKEN.*
+
+# local backups
+*.bak.*
+
+# python cache
+__pycache__/
+*.pyc
+
+# broken snapshots
+*.broken.*
